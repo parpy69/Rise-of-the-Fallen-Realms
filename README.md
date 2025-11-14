@@ -11,7 +11,7 @@ A modern, cinematic dark fantasy game landing page built with HTML and TailwindC
 
 A fictional game showcase website demonstrating professional web development skills. Features a complete landing page experience with interactive elements, smooth animations, and modern design patterns.
 
-**Live Demo:** [View Website](file://index.html) *(Open `index.html` in your browser)*
+**Live Demo:** [https://rise-of-the-fallen-realms.vercel.app/](https://rise-of-the-fallen-realms.vercel.app/)
 
 ## ✨ Features
 

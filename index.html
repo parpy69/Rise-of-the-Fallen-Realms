@@ -273,6 +273,14 @@
         .notification {
             transition: all 0.3s ease;
         }
+        /* Platform Cards */
+        .platform-card {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .platform-card:hover {
+            transform: scale(1.05);
+        }
     </style>
 </head>
 <body class="text-gray-200 font-sans antialiased">
@@ -299,6 +307,113 @@
         </div>
     </div>
 
+    <!-- Pre-Order Platform Selection Modal -->
+    <div class="modal" id="platform-modal">
+        <div class="max-w-4xl w-full mx-auto">
+            <div class="bg-dark-surface rounded-xl border-2 border-purple-glow/50 p-8 relative">
+                <span class="modal-close" onclick="closePlatformModal()">&times;</span>
+                <h2 class="text-4xl font-bold mb-4 glow-text text-center">Choose Your Platform</h2>
+                <p class="text-gray-400 text-center mb-8">Select your preferred gaming platform</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Windows -->
+                    <button onclick="selectPlatform('Windows')" class="platform-card bg-dark-accent/50 p-8 rounded-xl border-2 border-purple-glow/20 hover:border-purple-glow hover:bg-purple-glow/10 transition-all group">
+                        <div class="text-6xl mb-4">🪟</div>
+                        <h3 class="text-2xl font-bold mb-2">Windows</h3>
+                        <p class="text-gray-400">Windows 10/11 64-bit</p>
+                        <p class="text-purple-glow font-semibold mt-4">$59.99</p>
+                    </button>
+                    
+                    <!-- macOS -->
+                    <button onclick="selectPlatform('macOS')" class="platform-card bg-dark-accent/50 p-8 rounded-xl border-2 border-purple-glow/20 hover:border-purple-glow hover:bg-purple-glow/10 transition-all group">
+                        <div class="text-6xl mb-4">🍎</div>
+                        <h3 class="text-2xl font-bold mb-2">macOS</h3>
+                        <p class="text-gray-400">macOS 11.0 or later</p>
+                        <p class="text-purple-glow font-semibold mt-4">$59.99</p>
+                    </button>
+                    
+                    <!-- Linux -->
+                    <button onclick="selectPlatform('Linux')" class="platform-card bg-dark-accent/50 p-8 rounded-xl border-2 border-purple-glow/20 hover:border-purple-glow hover:bg-purple-glow/10 transition-all group">
+                        <div class="text-6xl mb-4">🐧</div>
+                        <h3 class="text-2xl font-bold mb-2">Linux</h3>
+                        <p class="text-gray-400">Ubuntu 20.04+ / SteamOS</p>
+                        <p class="text-purple-glow font-semibold mt-4">$59.99</p>
+                    </button>
+                    
+                    <!-- Android -->
+                    <button onclick="selectPlatform('Android')" class="platform-card bg-dark-accent/50 p-8 rounded-xl border-2 border-purple-glow/20 hover:border-purple-glow hover:bg-purple-glow/10 transition-all group">
+                        <div class="text-6xl mb-4">📱</div>
+                        <h3 class="text-2xl font-bold mb-2">Android</h3>
+                        <p class="text-gray-400">Android 10.0 or later</p>
+                        <p class="text-purple-glow font-semibold mt-4">$39.99</p>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div class="modal" id="checkout-modal">
+        <div class="max-w-3xl w-full mx-auto">
+            <div class="bg-dark-surface rounded-xl border-2 border-purple-glow/50 p-8 relative">
+                <span class="modal-close" onclick="closeCheckout()">&times;</span>
+                <h2 class="text-4xl font-bold mb-2 glow-text text-center">Complete Your Order</h2>
+                <p class="text-gray-400 text-center mb-8">Platform: <span id="selected-platform" class="text-purple-glow font-semibold"></span></p>
+                
+                <div class="space-y-6">
+                    <!-- Order Summary -->
+                    <div class="bg-dark-accent/50 p-6 rounded-xl border border-purple-glow/20">
+                        <h3 class="text-xl font-bold mb-4">Order Summary</h3>
+                        <div class="flex justify-between mb-2">
+                            <span class="text-gray-400">Rise of the Fallen Realms</span>
+                            <span class="font-semibold" id="game-price">$59.99</span>
+                        </div>
+                        <div class="flex justify-between mb-2">
+                            <span class="text-gray-400">Pre-Order Bonus</span>
+                            <span class="text-green-400">+500 💎 Free</span>
+                        </div>
+                        <div class="border-t border-purple-glow/20 mt-4 pt-4 flex justify-between">
+                            <span class="text-xl font-bold">Total</span>
+                            <span class="text-2xl font-bold text-purple-glow" id="total-price">$59.99</span>
+                        </div>
+                    </div>
+
+                    <!-- Payment Form -->
+                    <form onsubmit="completeOrder(event)" class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-semibold mb-2">Email</label>
+                            <input type="email" required class="w-full px-4 py-3 rounded-lg bg-dark-accent border border-purple-glow/30 text-white focus:outline-none focus:border-purple-glow transition-colors" placeholder="your@email.com">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-semibold mb-2">Card Number</label>
+                            <input type="text" required pattern="[0-9]{16}" maxlength="16" class="w-full px-4 py-3 rounded-lg bg-dark-accent border border-purple-glow/30 text-white focus:outline-none focus:border-purple-glow transition-colors" placeholder="1234 5678 9012 3456">
+                        </div>
+                        
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-semibold mb-2">Expiry Date</label>
+                                <input type="text" required pattern="(0[1-9]|1[0-2])\/[0-9]{2}" placeholder="MM/YY" class="w-full px-4 py-3 rounded-lg bg-dark-accent border border-purple-glow/30 text-white focus:outline-none focus:border-purple-glow transition-colors">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold mb-2">CVV</label>
+                                <input type="text" required pattern="[0-9]{3,4}" maxlength="4" class="w-full px-4 py-3 rounded-lg bg-dark-accent border border-purple-glow/30 text-white focus:outline-none focus:border-purple-glow transition-colors" placeholder="123">
+                            </div>
+                        </div>
+
+                        <button type="submit" class="w-full bg-purple-glow hover:bg-purple-700 px-8 py-4 rounded-lg text-lg font-semibold transition-all transform hover:scale-105 mt-6">
+                            Complete Pre-Order
+                        </button>
+                    </form>
+
+                    <p class="text-gray-500 text-sm text-center">
+                        🔒 Secure checkout • This is a demo - no real charges will be made
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Scroll to Top Button -->
     <div class="scroll-to-top" id="scroll-to-top" onclick="scrollToTop()">
         <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -318,11 +433,12 @@
                     <a href="#features" class="hover:text-purple-glow transition-colors">Features</a>
                     <a href="#gallery" class="hover:text-purple-glow transition-colors">Gallery</a>
                     <a href="#factions" class="hover:text-purple-glow transition-colors">Factions</a>
+                    <a href="#store" class="hover:text-purple-glow transition-colors">Store</a>
                     <a href="#lore" class="hover:text-purple-glow transition-colors">Lore</a>
                 </div>
                 <div class="flex items-center gap-4">
-                    <button onclick="showComingSoon()" class="hidden sm:block bg-purple-glow hover:bg-purple-700 px-6 py-2 rounded-lg transition-all transform hover:scale-105">
-                        Play Now
+                    <button onclick="openPreOrder()" class="hidden sm:block bg-purple-glow hover:bg-purple-700 px-6 py-2 rounded-lg transition-all transform hover:scale-105">
+                        Pre-Order Now
                     </button>
                     <div class="hamburger md:hidden" id="hamburger" onclick="toggleMobileMenu()">
                         <span></span>
@@ -341,9 +457,10 @@
             <a href="#features" onclick="toggleMobileMenu()" class="text-lg hover:text-purple-glow transition-colors">Features</a>
             <a href="#gallery" onclick="toggleMobileMenu()" class="text-lg hover:text-purple-glow transition-colors">Gallery</a>
             <a href="#factions" onclick="toggleMobileMenu()" class="text-lg hover:text-purple-glow transition-colors">Factions</a>
+            <a href="#store" onclick="toggleMobileMenu()" class="text-lg hover:text-purple-glow transition-colors">Store</a>
             <a href="#lore" onclick="toggleMobileMenu()" class="text-lg hover:text-purple-glow transition-colors">Lore</a>
-            <button onclick="showComingSoon(); toggleMobileMenu();" class="bg-purple-glow hover:bg-purple-700 px-6 py-3 rounded-lg transition-all text-left mt-4">
-                Play Now
+            <button onclick="openPreOrder(); toggleMobileMenu();" class="bg-purple-glow hover:bg-purple-700 px-6 py-3 rounded-lg transition-all text-left mt-4">
+                Pre-Order Now
             </button>
         </div>
     </div>
@@ -481,6 +598,126 @@
                          alt="Magic and fire" 
                          class="w-full h-64 object-cover">
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Store Section -->
+    <section id="store" class="fade-in-section py-24 px-4 bg-gradient-to-b from-dark-surface to-dark-bg">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4 glow-text">Diamond Store</h2>
+                <p class="text-gray-400 text-lg">Purchase diamonds to unlock exclusive content and power-ups</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <!-- Pack 1: Starter -->
+                <div class="bg-gradient-to-b from-slate-700/20 to-dark-accent/50 p-8 rounded-xl border-2 border-slate-500/30 hover:border-slate-400 transition-all transform hover:scale-105">
+                    <div class="text-center mb-6">
+                        <div class="text-6xl mb-4">💎</div>
+                        <h3 class="text-2xl font-bold mb-2">Starter Pack</h3>
+                        <div class="text-4xl font-bold text-slate-300 mb-2">500 💎</div>
+                        <p class="text-gray-400">Perfect for beginners</p>
+                    </div>
+                    <ul class="space-y-2 mb-6 text-sm text-gray-300">
+                        <li>✓ 500 Diamonds</li>
+                        <li>✓ +10 Bonus Diamonds</li>
+                        <li>✓ Common Loot Box</li>
+                    </ul>
+                    <button onclick="buyDiamonds('Starter Pack', 5.00, 500)" class="w-full bg-slate-600 hover:bg-slate-500 px-6 py-3 rounded-lg font-semibold transition-all">
+                        $5.00
+                    </button>
+                </div>
+
+                <!-- Pack 2: Warrior -->
+                <div class="bg-gradient-to-b from-blue-700/20 to-dark-accent/50 p-8 rounded-xl border-2 border-blue-500/30 hover:border-blue-400 transition-all transform hover:scale-105">
+                    <div class="text-center mb-6">
+                        <div class="text-6xl mb-4">💎💎</div>
+                        <h3 class="text-2xl font-bold mb-2">Warrior Pack</h3>
+                        <div class="text-4xl font-bold text-blue-300 mb-2">1,200 💎</div>
+                        <p class="text-gray-400">Most popular choice</p>
+                    </div>
+                    <ul class="space-y-2 mb-6 text-sm text-gray-300">
+                        <li>✓ 1,200 Diamonds</li>
+                        <li>✓ +50 Bonus Diamonds</li>
+                        <li>✓ Rare Loot Box</li>
+                        <li>✓ Exclusive Emote</li>
+                    </ul>
+                    <button onclick="buyDiamonds('Warrior Pack', 10.00, 1200)" class="w-full bg-blue-600 hover:bg-blue-500 px-6 py-3 rounded-lg font-semibold transition-all">
+                        $10.00
+                    </button>
+                </div>
+
+                <!-- Pack 3: Champion -->
+                <div class="bg-gradient-to-b from-purple-700/20 to-dark-accent/50 p-8 rounded-xl border-2 border-purple-500/30 hover:border-purple-400 transition-all transform hover:scale-105">
+                    <div class="text-center mb-6">
+                        <div class="text-6xl mb-4">💎💎💎</div>
+                        <h3 class="text-2xl font-bold mb-2">Champion Pack</h3>
+                        <div class="text-4xl font-bold text-purple-300 mb-2">2,800 💎</div>
+                        <p class="text-gray-400">Best value deal</p>
+                    </div>
+                    <ul class="space-y-2 mb-6 text-sm text-gray-300">
+                        <li>✓ 2,800 Diamonds</li>
+                        <li>✓ +150 Bonus Diamonds</li>
+                        <li>✓ Epic Loot Box</li>
+                        <li>✓ 3x Exclusive Emotes</li>
+                        <li>✓ Rare Weapon Skin</li>
+                    </ul>
+                    <button onclick="buyDiamonds('Champion Pack', 20.00, 2800)" class="w-full bg-purple-glow hover:bg-purple-600 px-6 py-3 rounded-lg font-semibold transition-all">
+                        $20.00
+                    </button>
+                </div>
+
+                <!-- Pack 4: Legend -->
+                <div class="bg-gradient-to-b from-amber-700/20 to-dark-accent/50 p-8 rounded-xl border-2 border-amber-500/30 hover:border-amber-400 transition-all transform hover:scale-105">
+                    <div class="text-center mb-6">
+                        <div class="text-6xl mb-4">💎💎💎💎</div>
+                        <h3 class="text-2xl font-bold mb-2">Legend Pack</h3>
+                        <div class="text-4xl font-bold text-amber-300 mb-2">6,500 💎</div>
+                        <p class="text-gray-400">For serious players</p>
+                    </div>
+                    <ul class="space-y-2 mb-6 text-sm text-gray-300">
+                        <li>✓ 6,500 Diamonds</li>
+                        <li>✓ +400 Bonus Diamonds</li>
+                        <li>✓ Legendary Loot Box</li>
+                        <li>✓ Full Emote Collection</li>
+                        <li>✓ Epic Weapon Skin Pack</li>
+                        <li>✓ Exclusive Mount</li>
+                    </ul>
+                    <button onclick="buyDiamonds('Legend Pack', 50.00, 6500)" class="w-full bg-amber-600 hover:bg-amber-500 px-6 py-3 rounded-lg font-semibold transition-all">
+                        $50.00
+                    </button>
+                </div>
+
+                <!-- Pack 5: Ultimate -->
+                <div class="bg-gradient-to-b from-red-700/20 to-dark-accent/50 p-8 rounded-xl border-2 border-red-500/30 hover:border-red-400 transition-all transform hover:scale-105 md:col-span-2 lg:col-span-1">
+                    <div class="inline-block bg-red-glow/20 border border-red-glow px-3 py-1 rounded-full text-sm font-semibold mb-4">
+                        BEST VALUE
+                    </div>
+                    <div class="text-center mb-6">
+                        <div class="text-6xl mb-4">💎💎💎💎💎</div>
+                        <h3 class="text-2xl font-bold mb-2">Ultimate Pack</h3>
+                        <div class="text-4xl font-bold text-red-300 mb-2">14,000 💎</div>
+                        <p class="text-gray-400">Maximum power</p>
+                    </div>
+                    <ul class="space-y-2 mb-6 text-sm text-gray-300">
+                        <li>✓ 14,000 Diamonds</li>
+                        <li>✓ +1,000 Bonus Diamonds</li>
+                        <li>✓ 3x Legendary Loot Boxes</li>
+                        <li>✓ Complete Cosmetic Bundle</li>
+                        <li>✓ Mythic Weapon Skin Set</li>
+                        <li>✓ Exclusive Mount & Pet</li>
+                        <li>✓ VIP Status (30 days)</li>
+                    </ul>
+                    <button onclick="buyDiamonds('Ultimate Pack', 100.00, 14000)" class="w-full bg-red-glow hover:bg-red-600 px-6 py-3 rounded-lg font-semibold transition-all">
+                        $100.00
+                    </button>
+                </div>
+            </div>
+
+            <div class="text-center mt-12 text-gray-500 text-sm">
+                <p>💳 Secure payment processing • 🔒 All transactions are encrypted</p>
+                <p class="mt-2">This is a demo store - no real charges will be made</p>
             </div>
         </div>
     </section>
@@ -869,7 +1106,120 @@
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
                 closeTrailer();
+                closePlatformModal();
+                closeCheckout();
                 toggleMobileMenu(true); // Close mobile menu if open
+            }
+        });
+
+        // Pre-Order Flow Functions
+        function openPreOrder() {
+            const modal = document.getElementById('platform-modal');
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closePlatformModal() {
+            const modal = document.getElementById('platform-modal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function selectPlatform(platform) {
+            closePlatformModal();
+            
+            // Set platform name
+            document.getElementById('selected-platform').textContent = platform;
+            
+            // Set price based on platform
+            const price = platform === 'Android' ? '$39.99' : '$59.99';
+            document.getElementById('game-price').textContent = price;
+            document.getElementById('total-price').textContent = price;
+            
+            // Open checkout modal
+            setTimeout(() => {
+                const checkoutModal = document.getElementById('checkout-modal');
+                checkoutModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }, 300);
+        }
+
+        function closeCheckout() {
+            const modal = document.getElementById('checkout-modal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function completeOrder(event) {
+            event.preventDefault();
+            
+            const platform = document.getElementById('selected-platform').textContent;
+            const price = document.getElementById('total-price').textContent;
+            
+            closeCheckout();
+            
+            // Show success notification
+            const notification = document.createElement('div');
+            notification.className = 'fixed top-20 right-4 bg-green-600 text-white px-6 py-4 rounded-lg shadow-2xl z-50 animate-slide-up max-w-md';
+            notification.innerHTML = `
+                <div class="flex items-center gap-3">
+                    <svg class="w-6 h-6 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                    </svg>
+                    <div>
+                        <div class="font-semibold">Pre-Order Confirmed!</div>
+                        <div class="text-sm text-gray-200">Rise of the Fallen Realms (${platform}) - ${price}</div>
+                        <div class="text-sm text-gray-200 mt-1">Bonus: +500 💎 added to your account</div>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.opacity = '0';
+                notification.style.transform = 'translateY(-20px)';
+                notification.style.transition = 'all 0.3s ease';
+                setTimeout(() => notification.remove(), 300);
+            }, 4000);
+        }
+
+        // Diamond Store Functions
+        function buyDiamonds(packName, price, diamonds) {
+            // Show purchase confirmation
+            const notification = document.createElement('div');
+            notification.className = 'fixed top-20 right-4 bg-purple-glow text-white px-6 py-4 rounded-lg shadow-2xl z-50 animate-slide-up max-w-md';
+            notification.innerHTML = `
+                <div class="flex items-center gap-3">
+                    <svg class="w-6 h-6 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                    </svg>
+                    <div>
+                        <div class="font-semibold">Purchase Successful!</div>
+                        <div class="text-sm text-gray-200">${packName} - $${price.toFixed(2)}</div>
+                        <div class="text-sm text-gray-200 mt-1">+${diamonds.toLocaleString()} 💎 added to your account</div>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.opacity = '0';
+                notification.style.transform = 'translateY(-20px)';
+                notification.style.transition = 'all 0.3s ease';
+                setTimeout(() => notification.remove(), 300);
+            }, 4000);
+        }
+
+        // Close modals on click outside
+        document.getElementById('platform-modal')?.addEventListener('click', (e) => {
+            if (e.target.id === 'platform-modal') {
+                closePlatformModal();
+            }
+        });
+
+        document.getElementById('checkout-modal')?.addEventListener('click', (e) => {
+            if (e.target.id === 'checkout-modal') {
+                closeCheckout();
             }
         });
 
