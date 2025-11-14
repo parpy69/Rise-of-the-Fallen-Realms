@@ -281,6 +281,19 @@
         .platform-card:hover {
             transform: scale(1.05);
         }
+        /* Diamond Icon */
+        .diamond-icon {
+            display: inline-block;
+            width: 1em;
+            height: 1em;
+            vertical-align: middle;
+            margin-left: 0.25em;
+        }
+        .diamond-number {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25em;
+        }
     </style>
 </head>
 <body class="text-gray-200 font-sans antialiased">
@@ -386,7 +399,13 @@
                         </div>
                         <div class="flex justify-between mb-2">
                             <span class="text-gray-400">Pre-Order Bonus</span>
-                            <span class="text-green-400">+500 💎 Free</span>
+                            <span class="text-green-400 inline-flex items-center gap-1">
+                                +500
+                                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M6 2L2 7l10 14 10-14-4-5H6zm.5 2h11L19 7l-7 9.5L5 7l1.5-3z" fill="#4ade80"/>
+                                </svg>
+                                Free
+                            </span>
                         </div>
                         <div class="border-t border-purple-glow/20 mt-4 pt-4 flex justify-between">
                             <span class="text-xl font-bold">Total</span>
@@ -632,7 +651,12 @@
                     <div class="text-center mb-6">
                         <div class="text-6xl mb-4">💎</div>
                         <h3 class="text-2xl font-bold mb-2">Starter Pack</h3>
-                        <div class="text-4xl font-bold text-slate-300 mb-2">500 💎</div>
+                        <div class="text-4xl font-bold text-slate-300 mb-2 diamond-number">
+                            500
+                            <svg class="diamond-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M6 2L2 7l10 14 10-14-4-5H6zm.5 2h11L19 7l-7 9.5L5 7l1.5-3z" fill="#60a5fa"/>
+                            </svg>
+                        </div>
                         <p class="text-gray-400">Perfect for beginners</p>
                     </div>
                     <ul class="space-y-2 mb-6 text-sm text-gray-300 flex-grow">
@@ -650,7 +674,12 @@
                     <div class="text-center mb-6">
                         <div class="text-6xl mb-4">💎💎</div>
                         <h3 class="text-2xl font-bold mb-2">Warrior Pack</h3>
-                        <div class="text-4xl font-bold text-blue-300 mb-2">1,200 💎</div>
+                        <div class="text-4xl font-bold text-blue-300 mb-2 diamond-number">
+                            1,200
+                            <svg class="diamond-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M6 2L2 7l10 14 10-14-4-5H6zm.5 2h11L19 7l-7 9.5L5 7l1.5-3z" fill="#60a5fa"/>
+                            </svg>
+                        </div>
                         <p class="text-gray-400">Most popular choice</p>
                     </div>
                     <ul class="space-y-2 mb-6 text-sm text-gray-300 flex-grow">
@@ -669,7 +698,12 @@
                     <div class="text-center mb-6">
                         <div class="text-6xl mb-4">💎💎💎</div>
                         <h3 class="text-2xl font-bold mb-2">Champion Pack</h3>
-                        <div class="text-4xl font-bold text-purple-300 mb-2">2,800 💎</div>
+                        <div class="text-4xl font-bold text-purple-300 mb-2 diamond-number">
+                            2,800
+                            <svg class="diamond-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M6 2L2 7l10 14 10-14-4-5H6zm.5 2h11L19 7l-7 9.5L5 7l1.5-3z" fill="#a78bfa"/>
+                            </svg>
+                        </div>
                         <p class="text-gray-400">Best value deal</p>
                     </div>
                     <ul class="space-y-2 mb-6 text-sm text-gray-300 flex-grow">
@@ -689,7 +723,12 @@
                     <div class="text-center mb-6">
                         <div class="text-6xl mb-4">💎💎💎💎</div>
                         <h3 class="text-2xl font-bold mb-2">Legend Pack</h3>
-                        <div class="text-4xl font-bold text-amber-300 mb-2">6,500 💎</div>
+                        <div class="text-4xl font-bold text-amber-300 mb-2 diamond-number">
+                            6,500
+                            <svg class="diamond-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M6 2L2 7l10 14 10-14-4-5H6zm.5 2h11L19 7l-7 9.5L5 7l1.5-3z" fill="#fbbf24"/>
+                            </svg>
+                        </div>
                         <p class="text-gray-400">For serious players</p>
                     </div>
                     <ul class="space-y-2 mb-6 text-sm text-gray-300 flex-grow">
@@ -713,7 +752,12 @@
                     <div class="text-center mb-6">
                         <div class="text-6xl mb-4">💎💎💎💎💎</div>
                         <h3 class="text-2xl font-bold mb-2">Ultimate Pack</h3>
-                        <div class="text-4xl font-bold text-red-300 mb-2">14,000 💎</div>
+                        <div class="text-4xl font-bold text-red-300 mb-2 diamond-number">
+                            14,000
+                            <svg class="diamond-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M6 2L2 7l10 14 10-14-4-5H6zm.5 2h11L19 7l-7 9.5L5 7l1.5-3z" fill="#f87171"/>
+                            </svg>
+                        </div>
                         <p class="text-gray-400">Maximum power</p>
                     </div>
                     <ul class="space-y-2 mb-6 text-sm text-gray-300 flex-grow">
@@ -1185,7 +1229,13 @@
                     <div>
                         <div class="font-semibold">Pre-Order Confirmed!</div>
                         <div class="text-sm text-gray-200">Rise of the Fallen Realms (${platform}) - ${price}</div>
-                        <div class="text-sm text-gray-200 mt-1">Bonus: +500 💎 added to your account</div>
+                        <div class="text-sm text-gray-200 mt-1 inline-flex items-center gap-1">
+                            Bonus: +500
+                            <svg class="w-3 h-3" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M6 2L2 7l10 14 10-14-4-5H6zm.5 2h11L19 7l-7 9.5L5 7l1.5-3z" fill="#4ade80"/>
+                            </svg>
+                            added to your account
+                        </div>
                     </div>
                 </div>
             `;
@@ -1212,7 +1262,13 @@
                     <div>
                         <div class="font-semibold">Purchase Successful!</div>
                         <div class="text-sm text-gray-200">${packName} - $${price.toFixed(2)}</div>
-                        <div class="text-sm text-gray-200 mt-1">+${diamonds.toLocaleString()} 💎 added to your account</div>
+                        <div class="text-sm text-gray-200 mt-1 inline-flex items-center gap-1">
+                            +${diamonds.toLocaleString()}
+                            <svg class="w-3 h-3" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M6 2L2 7l10 14 10-14-4-5H6zm.5 2h11L19 7l-7 9.5L5 7l1.5-3z" fill="#9333ea"/>
+                            </svg>
+                            added to your account
+                        </div>
                     </div>
                 </div>
             `;
