@@ -123,7 +123,7 @@ Gold Accent:        #fbbf24 (Highlights)
 Each pack includes bonus items and cosmetics
 
 ### Countdown Timer
-Real-time JavaScript countdown to a fake "beta launch" (30 days from page load)
+Real-time JavaScript countdown to a fake "beta launch" (1 year / 365 days from page load)
 
 ### Scroll Animations
 Intersection Observer API triggers fade-in animations as sections enter viewport
@@ -158,9 +158,10 @@ Professional slide-in notifications for:
 - Hover effects and pricing
 
 ### Diamond Store
-- 5 color-coded pricing tiers
-- Feature lists with icons
-- Aligned card layouts
+- 5 color-coded pricing tiers ($5-$100)
+- Feature lists with properly aligned checkmarks
+- Consistent card layouts with flexbox alignment
+- SVG diamond icons for cross-platform consistency
 
 ### Faction Cards
 - Hover lift effects
@@ -200,7 +201,8 @@ Professional slide-in notifications for:
 ### Assets
 - **Images**: [Unsplash](https://unsplash.com) - Free stock photos
 - **Trailer Video**: Elden Ring Official Trailer (placeholder)
-- **Icons**: Inline SVG and Unicode emojis
+- **Icons**: Inline SVG icons (platform logos, diamond icons, custom favicon)
+- **Fonts**: System fonts (no external font dependencies)
 
 ### Inspiration
 - Modern game landing pages (Elden Ring, Diablo IV, WoW)
