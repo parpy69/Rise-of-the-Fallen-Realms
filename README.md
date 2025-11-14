@@ -172,10 +172,9 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ## 👤 Author
 
-**Your Name**
-- GitHub: [@yourusername](https://github.com/yourusername)
-- Portfolio: [yourportfolio.com](https://yourportfolio.com)
-- LinkedIn: [Your Name](https://linkedin.com/in/yourname)
+**Abdullah Khudeish**
+- GitHub: [@parpy69](https://github.com/parpy69)
+
 
 ---
 
