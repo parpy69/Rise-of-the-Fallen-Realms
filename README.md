@@ -9,7 +9,7 @@ A modern, cinematic dark fantasy game landing page built with HTML and TailwindC
 
 ## 🎯 Overview
 
-A fictional game showcase website demonstrating professional web development skills. Features a complete landing page experience with interactive elements, smooth animations, and modern design patterns.
+A fictional game showcase website demonstrating professional web development skills. Features a complete landing page experience with interactive elements, smooth animations, modern design patterns, and a fully functional pre-order and in-game store system.
 
 **Live Demo:** [https://rise-of-the-fallen-realms.vercel.app/](https://rise-of-the-fallen-realms.vercel.app/)
 
@@ -21,12 +21,17 @@ A fictional game showcase website demonstrating professional web development ski
 - **Scroll Animations** - Intersection Observer-based fade-in effects
 - **Mobile Navigation** - Responsive hamburger menu with smooth transitions
 - **Scroll to Top** - Floating button with smooth scroll behavior
+- **Pre-Order System** - Multi-step platform selection and checkout flow
+- **Diamond Store** - In-game currency shop with 5 pricing tiers
 
 ### 🎨 Design Components
 - **Hero Section** - Parallax background with animated particles and countdown timer
 - **Feature Grid** - 4-column responsive card layout
 - **Image Gallery** - 6-image grid with hover zoom effects
 - **Faction Cards** - 3 detailed cards with hover lift animations
+- **Diamond Store** - 5 pricing tiers with color-coded cards ($5-$100)
+- **Platform Selection** - Windows, macOS, Linux, Android with official logos
+- **Checkout Modal** - Complete payment form with order summary
 - **Testimonials** - Player reviews with ratings
 - **System Requirements** - Collapsible accordion sections
 - **Newsletter Signup** - Form with custom success notifications
@@ -98,6 +103,25 @@ Gold Accent:        #fbbf24 (Highlights)
 
 ## 🎯 Key Features Showcase
 
+### Pre-Order System
+```javascript
+1. Click "Pre-Order Now" button
+2. Choose platform (Windows/macOS/Linux/Android)
+3. View order summary with pre-order bonus (+500 💎)
+4. Complete checkout form (email, card details)
+5. Receive confirmation notification
+```
+
+### Diamond Store
+5 purchasable currency packs:
+- **Starter Pack** - 500 💎 ($5.00)
+- **Warrior Pack** - 1,200 💎 ($10.00)
+- **Champion Pack** - 2,800 💎 ($20.00)
+- **Legend Pack** - 6,500 💎 ($50.00)
+- **Ultimate Pack** - 14,000 💎 ($100.00)
+
+Each pack includes bonus items and cosmetics
+
 ### Countdown Timer
 Real-time JavaScript countdown to a fake "beta launch" (30 days from page load)
 
@@ -114,9 +138,11 @@ Intersection Observer API triggers fade-in animations as sections enter viewport
 
 ### Custom Notifications
 Professional slide-in notifications for:
+- Pre-order confirmations
+- Diamond purchase confirmations
 - Newsletter signup confirmation
 - "Coming Soon" messages for demo buttons
-- Auto-dismiss after 3 seconds
+- Auto-dismiss after 3-4 seconds
 
 ## 📸 Screenshots
 
@@ -124,7 +150,17 @@ Professional slide-in notifications for:
 - Parallax background
 - Animated floating particles
 - Live countdown timer
-- CTA buttons
+- Pre-Order CTA button
+
+### Platform Selection
+- 4 platforms with official SVG logos
+- Windows, macOS, Linux, Android
+- Hover effects and pricing
+
+### Diamond Store
+- 5 color-coded pricing tiers
+- Feature lists with icons
+- Aligned card layouts
 
 ### Faction Cards
 - Hover lift effects
@@ -138,12 +174,17 @@ Professional slide-in notifications for:
 ## 🎓 What I Learned
 
 - Advanced CSS animations and transitions
+- Multi-step form workflows and state management
+- E-commerce UI patterns (product cards, checkout flows)
+- SVG icon integration and manipulation
+- Flexbox for perfect card alignment
 - Intersection Observer API for scroll-based animations
-- Modal/overlay patterns
+- Modal/overlay patterns with multiple screens
 - Mobile-first responsive design
 - Tailwind utility-first methodology
 - Vanilla JavaScript DOM manipulation
-- UX patterns for game landing pages
+- Custom notification systems
+- UX patterns for game landing pages and stores
 
 ## 🔮 Future Enhancements
 
